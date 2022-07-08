@@ -7,19 +7,16 @@ import {useTheme} from "../../hooks/useTheme";
 const Header: FC = () => {
 
     const {theme, setTheme} = useTheme();
-    const [checked, setChecked] = useState<boolean>(true);
-
-    console.log(checked)
+    let [checked, setChecked] = useState<boolean>(theme !== 'dark');
 
     const changeTheme = () => {
         if (checked) {
-            setTheme('light')
-        } else {
             setTheme('dark')
+        } else {
+            setTheme('light')
         }
         setChecked(!checked)
     }
-    console.log(checked)
 
     return (
         <div className={scss.header}>
@@ -36,7 +33,7 @@ const Header: FC = () => {
             </div>
             <div className={scss.header__tools}>
                 <div className={scss.header__tools_toggle}>
-                    <input type="checkbox" id="switch" onChange={changeTheme}/>
+                    <input type="checkbox" id="switch" defaultChecked={checked} onChange={changeTheme}/>
                     <label htmlFor="switch">Toggle</label>
                 </div>
             </div>

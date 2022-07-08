@@ -1,14 +1,18 @@
 import React from 'react';
 
-import {Header} from "../../components";
+import scss from './MainLayout.module.scss'
+import {Footer, Header} from "../../components";
 import {Outlet} from "react-router-dom";
 
 const MainLayout = () => {
     return (
-        <div>
+        <>
             <Header/>
-            <Outlet/>
-        </div>
+            <div className={scss.content}>
+                <Outlet/>
+            </div>
+            <Footer/>
+        </>
     );
 };
 

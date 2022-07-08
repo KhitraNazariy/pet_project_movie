@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--background-color-element);
+  transition: background-color .5s linear;
   height: 65px;
   padding: 0 150px;
   color: var(--color);
@@ -45,6 +46,7 @@
         width: 51px;
         height: 25px;
         background-color: #EA1C24;
+        transition: background-color .5s linear;
         display: block;
         border-radius: 100px;
         position: relative;
@@ -63,7 +65,8 @@
       }
 
       input:checked + label {
-        background: gray;
+        background-color: gray;
+        transition: background-color .5s linear;
       }
 
       input:checked + label:after {
