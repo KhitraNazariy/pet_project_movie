@@ -1,6 +1,31 @@
 .slider_card {
-  width: 200px;
-  height: 300px;
-  background-color: #EA1C24;
+  height: 400px;
   margin: 0 10px;
+
+  img {
+    width: 200px;
+    height: 300px;
+    border-radius: 15px;
+  }
+
+  &_title {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 10px;
+    color: var(--color);
+
+    h3 {
+      line-height: 20px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    p {
+      font-weight: 200;
+      font-size: 14px;
+    }
+
+  }
+
 }

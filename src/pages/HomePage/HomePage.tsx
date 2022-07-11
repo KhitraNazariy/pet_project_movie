@@ -23,13 +23,14 @@ const HomePage: FC = () => {
         dots: false,
         infinite: true,
         slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: false,
+        slidesToScroll: 3,
+        autoplay: true,
         adaptiveWidth: false,
         speed: 2000,
         autoplaySpeed: 4000,
         variableWidth: true,
         initialSlide: 0,
+        adaptiveHeight: true,
         responsive: [
             {
                 breakpoint: 1500,

@@ -45,12 +45,10 @@ html[data-theme='dark'] {
   --background-color-element: #0D0C0F;
   --background-color-page: #1A161F;
   --color: #d0cdcd;
-  --img-filter: grayscale(60%)
 }
 
 html[data-theme='light'] {
-  --background-color-element: #dcd7c8;
-  --background-color-page: #fff;
-  --color: #000;
-  --img-filter: grayscale(30%)
+  --background-color-element: #ACA7CB;
+  --background-color-page: #FFFFFF;
+  --color: #474554;
 }
