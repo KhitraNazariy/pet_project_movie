@@ -1,16 +1,13 @@
 import React, {FC} from 'react';
-import Slider from "react-slick";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import scss from './PopularMovieSlider.module.scss'
+import {PopularMovie} from "../../redux/movie/types";
 
-const PopularMovieSlider: FC<any> = ({item}) => {
+const PopularMovieSlider: FC<PopularMovie> = ({id}) => {
 
     return (
-        <div className={scss.slider}>
-            <div>{item}</div>
+        <div className={scss.slider_card}>
+            {id}
         </div>
     );
 };

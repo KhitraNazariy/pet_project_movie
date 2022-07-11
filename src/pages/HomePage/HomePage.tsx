@@ -1,6 +1,8 @@
 import React, {FC, useEffect} from 'react';
 import Slider from "react-slick";
 import {useSelector} from "react-redux";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import scss from './HomePage.module.scss';
 import {PopularMovieSlider, Poster} from "../../components";
@@ -17,22 +19,31 @@ const HomePage: FC = () => {
         dispatch(fetchPopularMovies())
     }, [])
 
-    console.log(error)
-
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
-        slidesToShow: 7,
-        slidesToScroll: 4,
-        autoplay: true,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: false,
+        adaptiveWidth: false,
         speed: 2000,
         autoplaySpeed: 4000,
+        variableWidth: true,
         initialSlide: 0,
         responsive: [
             {
+                breakpoint: 1500,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                    arrows: false
+                }
+            },
+            {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    arrows: false,
+                    slidesToShow: 4,
                     slidesToScroll: 2,
                     infinite: true,
                     dots: true
@@ -41,6 +52,7 @@ const HomePage: FC = () => {
             {
                 breakpoint: 600,
                 settings: {
+                    arrows: false,
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2
@@ -49,6 +61,7 @@ const HomePage: FC = () => {
             {
                 breakpoint: 480,
                 settings: {
+                    arrows: false,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
@@ -59,19 +72,15 @@ const HomePage: FC = () => {
     return (
         <div className={scss.content}>
             <Poster/>
-            <div>
-                {responsePopularMovies.results &&
-                    <Slider {...settings}>
-                        {
-                            responsePopularMovies.results.map(movie => (
-                                <div key={movie.id}>
-                                    <PopularMovieSlider movie={movie}/>
-                                </div>
-                            ))
-                        }
-                    </Slider>
-                }
-            </div>
+            {responsePopularMovies.results &&
+                <Slider {...settings}>
+                    {
+                        responsePopularMovies.results.map(movie => (
+                            <PopularMovieSlider key={movie.id} {...movie}/>
+                        ))
+                    }
+                </Slider>
+            }
         </div>
     );
 };
