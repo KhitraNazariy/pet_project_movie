@@ -1,5 +1,5 @@
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, button, input, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -41,14 +41,37 @@ table {
   border-spacing: 0;
 }
 
+body::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--background-color-page);
+  transition: background-color 2s;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--background-color-element-2);
+  border-radius: 9em;
+  box-shadow: inset 0 0 3px #93a2a2;
+}
+
+#root {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-color-page);
+  transition: background-color .5s;
+}
+
 html[data-theme='dark'] {
   --background-color-element: #0D0C0F;
+  --background-color-element-2: #EA1C24;
   --background-color-page: #1A161F;
   --color: #d0cdcd;
 }
 
 html[data-theme='light'] {
   --background-color-element: #ACA7CB;
+  --background-color-element-2: #ACA7CB;
   --background-color-page: #FFFFFF;
-  --color: #474554;
+  --color: #32303a;
 }

@@ -1,0 +1,27 @@
+.upcoming_card {
+
+  box-sizing: border-box;
+  padding-left: 40px;
+
+  &_backdrop {
+
+    img {
+      width: 380px;
+      border-radius: 15px;
+    }
+
+  }
+
+  &_description {
+
+    h3 {
+      text-align: center;
+      color: var(--color);
+      font-size: 24px;
+      font-weight: 900;
+      margin-top: 10px;
+    }
+
+  }
+
+}

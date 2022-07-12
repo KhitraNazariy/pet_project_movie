@@ -6,8 +6,8 @@ const Search: FC = () => {
     return (
         <div className={scss.search}>
             <form>
-                <input type="text"/>
-                <button>Знайти</button>
+                <input type="text" placeholder={'Пошук фільму, серіалу, людини...'}/>
+                <input type="submit" value={'Знайти'}/>
             </form>
         </div>
     );

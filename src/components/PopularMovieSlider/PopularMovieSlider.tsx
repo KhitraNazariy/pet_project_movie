@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 
 import scss from './PopularMovieSlider.module.scss'
-import {PopularMovie} from "../../redux/movie/types";
 import {IMG_URL} from "../../configs";
+import {PopularMovie} from "../../redux/movie/types/popularMovie";
 
 const PopularMovieSlider: FC<PopularMovie> = ({
     poster_path, title,release_date

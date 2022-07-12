@@ -7,68 +7,21 @@ import "slick-carousel/slick/slick-theme.css";
 import scss from './HomePage.module.scss';
 import {PopularMovieSlider, Poster} from "../../components";
 import {RootState, useAppDispatch} from "../../redux/store";
-import {fetchPopularMovies} from "../../redux/movie/asyncActions";
+import {fetchPopularMovies, fetchUpcomingMovies} from "../../redux/movie/asyncActions";
+import {settings} from "../../utils/SetingsForSlider";
+import {UpcomingMovieSlider} from "../../components/UpcomingMovieSlider/UpcomingMovieSlider";
 
 const HomePage: FC = () => {
 
     const dispatch = useAppDispatch();
 
-    const {responsePopularMovies, error} = useSelector((state: RootState) => state.movieSlice);
+    const {responsePopularMovies} = useSelector((state: RootState) => state.movieSlice);
+    const {responseUpcomingMovies} = useSelector((state: RootState) => state.movieSlice);
 
     useEffect(() => {
         dispatch(fetchPopularMovies())
+        dispatch(fetchUpcomingMovies())
     }, [])
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        slidesToShow: 6,
-        slidesToScroll: 3,
-        autoplay: true,
-        adaptiveWidth: false,
-        speed: 2000,
-        autoplaySpeed: 4000,
-        variableWidth: true,
-        initialSlide: 0,
-        adaptiveHeight: true,
-        responsive: [
-            {
-                breakpoint: 1500,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 2,
-                    arrows: false
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
 
     return (
         <div className={scss.content}>
@@ -76,12 +29,15 @@ const HomePage: FC = () => {
             {responsePopularMovies.results &&
                 <Slider {...settings}>
                     {
-                        responsePopularMovies.results.map(movie => (
+                        responsePopularMovies.results.map(movie =>
                             <PopularMovieSlider key={movie.id} {...movie}/>
-                        ))
+                        )
                     }
                 </Slider>
             }
+            <div className={scss.upcoming}>
+                {responseUpcomingMovies?.results?.map(movie => <UpcomingMovieSlider key={movie.id} {...movie}/>)}
+            </div>
         </div>
     );
 };

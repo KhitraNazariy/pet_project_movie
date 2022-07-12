@@ -1,5 +1,3 @@
-import {SerializedError} from "@reduxjs/toolkit";
-
 export type PopularMovie = {
     adult: boolean;
     backdrop_path: string;
@@ -22,10 +20,4 @@ export type ResponsePopularMovies = {
     results: PopularMovie[];
     total_pages: number;
     total_results: number;
-}
-
-export interface MovieSliceState {
-    responsePopularMovies: ResponsePopularMovies;
-    status: string;
-    error: SerializedError
 }

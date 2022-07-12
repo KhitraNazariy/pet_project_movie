@@ -12,3 +12,15 @@ export const fetchPopularMovies = createAsyncThunk(
         }
     }
 )
+
+
+export const fetchUpcomingMovies = createAsyncThunk(
+    'movieSlice/fetchUpcomingMovies',
+    async (_, {rejectWithValue}) => {
+        try {
+            return movieService.getUpcoming()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
