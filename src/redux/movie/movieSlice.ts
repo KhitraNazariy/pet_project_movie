@@ -1,4 +1,4 @@
-import {createSlice, SerializedError} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction, SerializedError} from "@reduxjs/toolkit";
 
 import {fetchPopularMovies, fetchUpcomingMovies} from "./asyncActions";
 import {ResponsePopularMovies} from "./types/popularMovie";
@@ -25,7 +25,7 @@ const movieSlice = createSlice({
             state.popularMoviesStatus = 'loading'
         });
 
-        builder.addCase(fetchPopularMovies.fulfilled, (state, action) => {
+        builder.addCase(fetchPopularMovies.fulfilled, (state, action: PayloadAction<ResponsePopularMovies>) => {
             state.popularMoviesStatus = 'success'
             state.responsePopularMovies = action.payload
         });
@@ -40,7 +40,7 @@ const movieSlice = createSlice({
             state.upcomingMoviesStatus = 'loading'
         });
 
-        builder.addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
+        builder.addCase(fetchUpcomingMovies.fulfilled, (state, action: PayloadAction<ResponseUpcomingMovies>) => {
             state.upcomingMoviesStatus = 'success'
             state.responseUpcomingMovies = action.payload
         });

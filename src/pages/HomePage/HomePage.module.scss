@@ -1,9 +1,17 @@
 .content {
-  padding: 0 80px;
+  padding: 0 100px;
+
+  &_title {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 30px 0 20px 30px;
+    color: var(--color);
+  }
+
 }
 
 .upcoming {
-  margin: 50px 0;
+  margin-bottom: 60px;
   padding: 40px 0 30px 0;
   border-radius: 10px;
   background-color: var(--background-color-element);

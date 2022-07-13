@@ -5,20 +5,19 @@
   background-color: var(--background-color-element);
   transition: background-color .5s linear;
   height: 65px;
-  padding: 0 150px;
+  padding: 0 100px;
   color: var(--color);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   &__navigation {
     display: flex;
     column-gap: 60px;
 
-    &_menu {
-      display: flex;
-      align-items: center;
-      column-gap: 40px;
-      font-size: 17px;
-      font-weight: 600;
-    }
+
+
+
+
+
 
     &_logo {
 
