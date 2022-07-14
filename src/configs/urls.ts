@@ -6,12 +6,14 @@ export const IMG_URL = 'https://image.tmdb.org/t/p/original'
 type Urls = {
     popularMovies: string;
     upcomingMovies: string;
+    nowPlayingMovie: string;
     popularTv: string;
 }
 
 export const urls: Urls = {
     popularMovies: '/movie/popular',
     upcomingMovies: '/movie/upcoming',
+    nowPlayingMovie: '/movie/now_playing',
     popularTv: '/tv/popular'
 }
 

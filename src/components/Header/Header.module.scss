@@ -7,74 +7,17 @@
   height: 65px;
   padding: 0 100px;
   color: var(--color);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  margin-bottom: 50px;
 
   &__navigation {
     display: flex;
     column-gap: 60px;
 
-
-
-
-
-
-
     &_logo {
 
       img {
         width: 55px;
-      }
-    }
-  }
-
-  &__tools {
-
-    &_toggle {
-
-      display: flex;
-
-      input[type=checkbox] {
-        height: 0;
-        width: 0;
-        visibility: hidden;
-      }
-
-      label {
-        cursor: pointer;
-        text-indent: -9999px;
-        width: 51px;
-        height: 25px;
-        background-color: #EA1C24;
-        transition: background-color .5s linear;
-        display: block;
-        border-radius: 100px;
-        position: relative;
-
-        &:after {
-          content: '';
-          position: absolute;
-          top: 2px;
-          left: 5px;
-          width: 20px;
-          height: 20px;
-          background: #fff;
-          border-radius: 90px;
-          transition: 0.3s;
-        }
-      }
-
-      input:checked + label {
-        background-color: gray;
-        transition: background-color .5s linear;
-      }
-
-      input:checked + label:after {
-        left: calc(100% - 5px);
-        transform: translateX(-100%);
-      }
-
-      label:active:after {
-        width: 25px;
       }
     }
   }

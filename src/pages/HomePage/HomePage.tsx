@@ -5,13 +5,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import scss from './HomePage.module.scss';
-import {PopularMovieSlider, Poster} from "../../components";
+import {
+    PopularMovieSlider,
+    PopularTvSlider,
+    Poster,
+    UpcomingMovieSlider
+} from "../../components";
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchPopularMovies, fetchUpcomingMovies} from "../../redux/movie/asyncActions";
 import {settings} from "../../utils/SetingsForSlider";
-import {UpcomingMovieSlider} from "../../components/UpcomingMovieSlider/UpcomingMovieSlider";
 import {fetchPopularTv} from "../../redux/tv/asyncActions";
-import {PopularTvSlider} from "../../components/PopularTvSlider/PopularTvSlider";
 
 const HomePage: FC = () => {
 
@@ -25,8 +28,6 @@ const HomePage: FC = () => {
         dispatch(fetchUpcomingMovies())
         dispatch(fetchPopularTv())
     }, [])
-
-    console.log(responsePopularTv)
 
     return (
         <div className={scss.content}>

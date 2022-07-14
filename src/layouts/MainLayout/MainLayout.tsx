@@ -1,13 +1,16 @@
 import React from 'react';
-
-import {Footer, Header} from "../../components";
 import {Outlet} from "react-router-dom";
+
+import scss from './MainLayout.module.scss';
+import {Footer, Header} from "../../components";
 
 const MainLayout = () => {
     return (
         <>
             <Header/>
-            <Outlet/>
+            <div className={scss.main}>
+                <Outlet/>
+            </div>
             <Footer/>
         </>
     );

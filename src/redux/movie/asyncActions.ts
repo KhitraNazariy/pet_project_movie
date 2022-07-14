@@ -24,3 +24,15 @@ export const fetchUpcomingMovies = createAsyncThunk(
         }
     }
 )
+
+
+export const fetchNowPlayingMovies = createAsyncThunk(
+    'movieSlice/fetchNowPlayingMovies',
+    async (_ , {rejectWithValue}) => {
+        try {
+            return movieService.getNowPlaying()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
