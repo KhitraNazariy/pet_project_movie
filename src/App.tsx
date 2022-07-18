@@ -9,6 +9,7 @@ import {
 }
 from "./pages";
 import {UpcomingMoviePage} from "./pages/UpcomingMoviePage/UpcomingMoviePage";
+import {TopRatedMoviePage} from "./pages/TopRatedMoviePage/TopRatedMoviePage";
 
 
 const App: FC = () => {
@@ -20,6 +21,7 @@ const App: FC = () => {
                     <Route path={'movie-popular'} element={<PopularMoviePage/>}/>
                     <Route path={'movie-now-playing'} element={<NowPlayingMoviePage/>}/>
                     <Route path={'movie-upcoming'} element={<UpcomingMoviePage/>}/>
+                    <Route path={'movie-top-rated'} element={<TopRatedMoviePage/>}/>
                 </Route>
             </Routes>
         </>

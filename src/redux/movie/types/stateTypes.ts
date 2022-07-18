@@ -2,6 +2,7 @@ import {SerializedError} from "@reduxjs/toolkit";
 import {ResponsePopularMovies} from "./popularMovie";
 import {ResponseUpcomingMovies} from "./upcomingMovies";
 import {ResponseNowPlayingMovie} from "./nowPlayingMovie";
+import {ResponseTopRatedMovie} from "./topRatedMovie";
 
 export interface MovieSliceState {
     responsePopularMovies: ResponsePopularMovies;
@@ -15,4 +16,8 @@ export interface MovieSliceState {
     responseNowPlayingMovie: ResponseNowPlayingMovie;
     nowPlayingMoviesStatus: string;
     nowPlayingMoviesError: SerializedError;
+
+    responseTopRatedMovie: ResponseTopRatedMovie;
+    topRatedMoviesStatus: string;
+    topRatedMoviesError: SerializedError;
 }

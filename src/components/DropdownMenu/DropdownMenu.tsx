@@ -19,7 +19,9 @@ const DropdownMenu: FC = () => {
                         <NavLink to={'movie-upcoming'}>
                             <li>Очікувані</li>
                         </NavLink>
-                        <li>Рейтингові</li>
+                        <NavLink to={'movie-top-rated'}>
+                            <li>Рейтингові</li>
+                        </NavLink>
                     </ul>
                 </li>
                 <li>

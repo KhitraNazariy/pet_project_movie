@@ -1,10 +1,11 @@
 import {createSlice, PayloadAction, SerializedError} from "@reduxjs/toolkit";
 
-import {fetchNowPlayingMovies, fetchPopularMovies, fetchUpcomingMovies} from "./asyncActions";
+import {fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchUpcomingMovies} from "./asyncActions";
 import {ResponsePopularMovies} from "./types/popularMovie";
 import {ResponseUpcomingMovies} from "./types/upcomingMovies";
 import {MovieSliceState} from "./types/stateTypes";
 import {ResponseNowPlayingMovie} from "./types/nowPlayingMovie";
+import {ResponseTopRatedMovie} from "./types/topRatedMovie";
 
 
 const initialState: MovieSliceState = {
@@ -18,7 +19,11 @@ const initialState: MovieSliceState = {
 
     responseNowPlayingMovie: {} as ResponseNowPlayingMovie,
     nowPlayingMoviesStatus: '',
-    nowPlayingMoviesError: '' as SerializedError
+    nowPlayingMoviesError: '' as SerializedError,
+
+    responseTopRatedMovie: {} as ResponseTopRatedMovie,
+    topRatedMoviesStatus: '',
+    topRatedMoviesError: '' as SerializedError,
 }
 
 const movieSlice = createSlice({
@@ -68,6 +73,21 @@ const movieSlice = createSlice({
         builder.addCase(fetchNowPlayingMovies.rejected, (state, action) => {
             state.nowPlayingMoviesStatus = 'error'
             state.nowPlayingMoviesError = action.error
+        });
+
+
+        builder.addCase(fetchTopRatedMovies.pending, (state) => {
+            state.topRatedMoviesStatus = 'loading'
+        });
+
+        builder.addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
+            state.topRatedMoviesStatus = 'success'
+            state.responseTopRatedMovie = action.payload
+        });
+
+        builder.addCase(fetchTopRatedMovies.rejected, (state, action) => {
+            state.topRatedMoviesStatus = 'error'
+            state.topRatedMoviesError = action.error
         });
     }
 });

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import scss from './UpcomingMoviePage.module.scss';
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchUpcomingMovies} from "../../redux/movie/asyncActions";
-import {MovieCard} from "../../components";
+import {MovieCard, Sort} from "../../components";
 
 const UpcomingMoviePage: FC = () => {
 
@@ -19,9 +19,7 @@ const UpcomingMoviePage: FC = () => {
 
     return (
         <div className={scss.upcoming}>
-            <div className={scss.upcoming__sort}>
-                some sort
-            </div>
+            <Sort/>
             <div className={scss.upcoming__content}>
                 {
                     responseUpcomingMovies.results?.map(movie => <MovieCard key={movie.id} {...movie}/>)

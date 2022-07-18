@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import scss from './NowPlayingMoviePage.module.scss';
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchNowPlayingMovies} from "../../redux/movie/asyncActions";
-import {MovieCard} from "../../components";
+import {MovieCard, Sort} from "../../components";
 
 const NowPlayingMoviePage: FC = () => {
 
@@ -17,9 +17,7 @@ const NowPlayingMoviePage: FC = () => {
 
     return (
         <div className={scss.nowPlaying}>
-            <div className={scss.nowPlaying__sort}>
-                some sort
-            </div>
+            <Sort/>
             <div className={scss.nowPlaying__content}>
                 {
                     responseNowPlayingMovie.results?.map(movie => <MovieCard key={movie.id} {...movie}/>)

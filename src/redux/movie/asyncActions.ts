@@ -36,3 +36,15 @@ export const fetchNowPlayingMovies = createAsyncThunk(
         }
     }
 )
+
+
+export const fetchTopRatedMovies = createAsyncThunk(
+    'movieSlice/fetchTopRatedMovies',
+    async (_ , {rejectWithValue}) => {
+        try {
+            return movieService.getTopRated()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)

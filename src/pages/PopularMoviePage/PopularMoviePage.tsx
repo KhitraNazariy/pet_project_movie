@@ -4,7 +4,8 @@ import {useSelector} from "react-redux";
 import scss from './PopularMoviePage.module.scss'
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchPopularMovies} from "../../redux/movie/asyncActions";
-import {MovieCard} from "../../components";
+import {Genres, MovieCard} from "../../components";
+import {Sort} from "../../components";
 
 const PopularMoviePage: FC = () => {
 
@@ -20,9 +21,7 @@ const PopularMoviePage: FC = () => {
 
     return (
         <div className={scss.popularMovie}>
-            <div className={scss.popularMovie__sort}>
-                some sort
-            </div>
+            <Sort/>
             <div className={scss.popularMovie__content}>
                 {
                     responsePopularMovies.results?.map(movie => <MovieCard key={movie.id} {...movie}/>)
