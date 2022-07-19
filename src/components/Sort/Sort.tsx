@@ -12,16 +12,16 @@ type PopupClick = MouseEvent & {
 
 type SortItem = {
     name: string
+    sortQuery: string;
 }
 
 const sortList: SortItem[] = [
-    {name: 'Популярні'},
-    {name: 'Непопулярні'},
-    {name: 'Високий рейтинг'},
-    {name: 'Низький рейтинг'},
-    {name: 'Давній реліз'},
-    {name: 'Свіжий реліз'},
-    {name: 'Назва (А-Я)'},
+    {name: 'Популярні', sortQuery: 'popularity.desc'},
+    {name: 'Непопулярні', sortQuery: 'popularity.asc'},
+    {name: 'Високий рейтинг', sortQuery: 'vote_average.desc'},
+    {name: 'Низький рейтинг', sortQuery: 'vote_average.asc'},
+    {name: 'Давній реліз', sortQuery: 'release_date.asc'},
+    {name: 'Свіжий реліз', sortQuery: 'release_date.desc'},
 ]
 
 const Sort: FC = () => {

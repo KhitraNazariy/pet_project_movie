@@ -5,6 +5,7 @@ import {ResponseUpcomingMovies} from "../redux/movie/types/upcomingMovies";
 import {ResponseNowPlayingMovie} from "../redux/movie/types/nowPlayingMovie";
 import {ResponseTopRatedMovie} from "../redux/movie/types/topRatedMovie";
 import {ResponseGenresMovie} from "../redux/filter/filterSlice";
+import {ResponseDiscoverMovie} from "../redux/filter/types/discoverMovie";
 
 export const movieService = {
     getPopular: () => axiosService.get<ResponsePopularMovies>
@@ -21,5 +22,8 @@ export const movieService = {
         .then(value => value.data),
     getGenres: () => axiosService.get<ResponseGenresMovie>
     (`${urls.genreMovies}?api_key=${API_KEY}&language=uk`)
+        .then(value => value.data),
+    getFiltered: (id: string, sortQuery: string) => axiosService.get<ResponseDiscoverMovie>
+    (`${urls.discoverMovie}?api_key=${API_KEY}&language=uk&sort_by=${sortQuery}&with_genres=${id}`)
         .then(value => value.data)
 }

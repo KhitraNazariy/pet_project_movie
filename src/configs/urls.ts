@@ -9,6 +9,7 @@ type Urls = {
     upcomingMovies: string;
     nowPlayingMovie: string;
     genreMovies: string;
+    discoverMovie: string;
 
     popularTv: string;
 }
@@ -19,6 +20,7 @@ export const urls: Urls = {
     upcomingMovies: '/movie/upcoming',
     nowPlayingMovie: '/movie/now_playing',
     genreMovies: '/genre/movie/list',
+    discoverMovie: '/discover/movie',
 
     popularTv: '/tv/popular'
 }

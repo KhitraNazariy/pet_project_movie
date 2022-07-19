@@ -28,8 +28,12 @@ const initialState: MovieSliceState = {
 
 const movieSlice = createSlice({
     name: 'movieSlice',
-    reducers: {},
     initialState,
+    reducers: {
+        clearResponsePopularMovie(state) {
+            state.responsePopularMovies = {} as ResponsePopularMovies
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchPopularMovies.pending, (state) => {
             state.popularMoviesStatus = 'loading'
@@ -91,5 +95,7 @@ const movieSlice = createSlice({
         });
     }
 });
+
+export const {clearResponsePopularMovie} = movieSlice.actions;
 
 export default movieSlice.reducer

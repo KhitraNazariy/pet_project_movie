@@ -1,14 +1,14 @@
 .genre {
-  background-color: var(--background-color-element);
-  padding: 12px 22px;
+  background-color: var(--background-color-page);
   width: fit-content;
   border-radius: 20px;
-  font-size: 19px;
+  font-size: 18px;
+  padding: 8px 18px;
   color: var(--color);
   cursor: pointer;
   border: 2px solid var(--background-color-element);
   &:hover {
-    background-color: var(--background-color-page);
-    border: 2px solid var(--background-color-element);
+    background-color: var(--background-color-element);
+    border: 2px solid var(--background-color-page);
   }
 }

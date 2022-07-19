@@ -1,7 +1,15 @@
 import {createSlice, PayloadAction, SerializedError} from "@reduxjs/toolkit";
-import {fetchGenresMovie} from "./asyncActions";
+
+import {fetchFilteredMovie, fetchGenresMovie} from "./asyncActions";
+import {ResponseDiscoverMovie} from "./types/discoverMovie";
 
 export type SortObj = {
+    name: string;
+    sortQuery: string;
+}
+
+export type WithGenres = {
+    id: number
     name: string;
 }
 
@@ -15,18 +23,27 @@ export type ResponseGenresMovie = {
 }
 
 interface FilterSliceState {
-    genres: ResponseGenresMovie
+    responseDiscoverMovie: ResponseDiscoverMovie;
+    discoverMovieStatus: string;
+    discoverMovieError: SerializedError;
+    genres: ResponseGenresMovie;
     error: SerializedError;
     status: string;
+    withGenres: WithGenres;
     sort: SortObj;
 }
 
 const initialState: FilterSliceState = {
+    responseDiscoverMovie: {} as ResponseDiscoverMovie,
+    discoverMovieStatus: '',
+    discoverMovieError: '' as SerializedError,
     genres: {} as ResponseGenresMovie,
     error: '' as SerializedError,
     status: '',
+    withGenres: {} as WithGenres,
     sort: {
-        name: 'Популярні'
+        name: 'Популярні',
+        sortQuery: 'popularity.desc'
     }
 }
 
@@ -36,7 +53,19 @@ const filterSlice = createSlice({
     reducers: {
         setSort(state, action: PayloadAction<SortObj>) {
             state.sort = action.payload
-        }
+        },
+
+        setGenre(state, action: PayloadAction<WithGenres>) {
+            state.withGenres = action.payload
+        },
+
+        clearSort(state) {
+            state.sort.sortQuery = 'popularity.desc'
+        },
+
+        clearGenres(state) {
+            state.withGenres = {} as WithGenres
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchGenresMovie.pending, (state) => {
@@ -52,11 +81,26 @@ const filterSlice = createSlice({
             state.status = 'error'
             state.error = action.error
         });
+
+
+        builder.addCase(fetchFilteredMovie.pending, (state) => {
+            state.discoverMovieStatus = 'loading'
+        });
+
+        builder.addCase(fetchFilteredMovie.fulfilled, (state, action: PayloadAction<ResponseDiscoverMovie>) => {
+            state.discoverMovieStatus = 'success'
+            state.responseDiscoverMovie = action.payload
+        });
+
+        builder.addCase(fetchFilteredMovie.rejected, (state, action) => {
+            state.discoverMovieStatus = 'error'
+            state.discoverMovieError = action.error
+        });
     }
 
 
 });
 
-export const {setSort} = filterSlice.actions
+export const {setSort, setGenre, clearSort, clearGenres} = filterSlice.actions
 
 export default filterSlice.reducer
