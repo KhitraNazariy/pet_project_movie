@@ -20,6 +20,7 @@ const initialState: MovieSliceState = {
     responseNowPlayingMovie: {} as ResponseNowPlayingMovie,
     nowPlayingMoviesStatus: '',
     nowPlayingMoviesError: '' as SerializedError,
+    minimumDate: '',
 
     responseTopRatedMovie: {} as ResponseTopRatedMovie,
     topRatedMoviesStatus: '',
@@ -32,7 +33,19 @@ const movieSlice = createSlice({
     reducers: {
         clearResponsePopularMovie(state) {
             state.responsePopularMovies = {} as ResponsePopularMovies
-        }
+        },
+
+        clearResponseUpcomingMovie(state) {
+            state.responseUpcomingMovies = {} as ResponseUpcomingMovies
+        },
+
+        clearResponseNowPlaying(state) {
+            state.responseNowPlayingMovie = {} as ResponseNowPlayingMovie
+        },
+
+        clearResponseTopRated(state) {
+            state.responseTopRatedMovie = {} as ResponseTopRatedMovie
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchPopularMovies.pending, (state) => {
@@ -72,6 +85,7 @@ const movieSlice = createSlice({
         builder.addCase(fetchNowPlayingMovies.fulfilled, (state, action: PayloadAction<ResponseNowPlayingMovie>) => {
             state.nowPlayingMoviesStatus = 'success'
             state.responseNowPlayingMovie = action.payload
+            state.minimumDate = action.payload.dates.minimum
         });
 
         builder.addCase(fetchNowPlayingMovies.rejected, (state, action) => {
@@ -96,6 +110,11 @@ const movieSlice = createSlice({
     }
 });
 
-export const {clearResponsePopularMovie} = movieSlice.actions;
+export const {
+    clearResponsePopularMovie,
+    clearResponseUpcomingMovie,
+    clearResponseNowPlaying,
+    clearResponseTopRated
+} = movieSlice.actions;
 
 export default movieSlice.reducer

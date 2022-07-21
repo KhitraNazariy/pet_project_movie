@@ -17,9 +17,9 @@ export const fetchGenresMovie = createAsyncThunk(
 
 export const fetchFilteredMovie = createAsyncThunk<ResponseDiscoverMovie, DiscoverMovieParams>(
     'filterSlice/fetchFilteredMovie',
-    async ({id, sortQuery}, {rejectWithValue}) => {
+    async ({id, sortQuery, minimumDate}, {rejectWithValue}) => {
         try {
-            return movieService.getFiltered(id, sortQuery)
+            return movieService.getFiltered(id, sortQuery, minimumDate)
         } catch (e) {
             return rejectWithValue(e.message)
         }

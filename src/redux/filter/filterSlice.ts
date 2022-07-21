@@ -60,6 +60,7 @@ const filterSlice = createSlice({
         },
 
         clearSort(state) {
+            state.sort.name = 'Популярні'
             state.sort.sortQuery = 'popularity.desc'
         },
 

@@ -1,6 +1,7 @@
 export type DiscoverMovieParams = {
     id: string;
     sortQuery: string;
+    minimumDate: string;
 };
 
 export type DiscoverMovie = {

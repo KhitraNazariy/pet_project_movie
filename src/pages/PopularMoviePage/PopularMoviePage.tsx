@@ -17,9 +17,7 @@ const PopularMoviePage: FC = () => {
     const {sort, withGenres, responseDiscoverMovie} = useSelector((state:RootState) => state.filterSlice);
 
     useEffect(() => {
-        if (!responsePopularMovies.results) {
-            dispatch(fetchPopularMovies())
-        }
+        dispatch(fetchPopularMovies())
         return () => {
             dispatch(clearSort())
             dispatch(clearGenres())
@@ -28,11 +26,9 @@ const PopularMoviePage: FC = () => {
 
     useEffect(() => {
         dispatch(clearResponsePopularMovie())
-        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery)}))
+        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: String('')}))
     },[sort, withGenres])
 
-    console.log(sort.sortQuery)
-    console.log(withGenres.id)
 
     return (
         <div className={scss.popularMovie}>
