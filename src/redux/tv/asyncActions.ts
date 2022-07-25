@@ -11,3 +11,37 @@ export const fetchPopularTv = createAsyncThunk(
         }
     }
 )
+
+
+export const fetchAiringTodayTv = createAsyncThunk(
+    'tvSlice/fetchAiringTodayTv',
+    async (_, {rejectWithValue}) => {
+        try {
+            return tvService.getAiringToday()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
+
+export const fetchOnTheAirTv = createAsyncThunk(
+    'tvSlice/fetchOnTheAirTv',
+    async (_, {rejectWithValue}) => {
+        try {
+            return tvService.getOnTheAir()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
+
+export const fetchTopRatedTv = createAsyncThunk(
+    'tvSlice/fetchTopRatedTv',
+    async (_, {rejectWithValue}) => {
+        try {
+            return tvService.getTopRated()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)

@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
-
-import scss from './Sort.module.scss';
 import {useSelector} from "react-redux";
+
+import scss from './SortMovie.module.scss';
 import {RootState, useAppDispatch} from "../../redux/store";
 import {setSort, SortObj} from "../../redux/filter/filterSlice";
 import {Genres} from "../Genres/Genres";
@@ -24,7 +24,7 @@ const sortList: SortItem[] = [
     {name: 'Свіжий реліз', sortQuery: 'release_date.desc'},
 ]
 
-const Sort: FC = () => {
+const SortMovie: FC = () => {
 
     const [openPopup, setOpenPopup] = useState(false);
     const {sort} = useSelector((state: RootState) => state.filterSlice);
@@ -93,4 +93,4 @@ const Sort: FC = () => {
     );
 };
 
-export {Sort};
+export {SortMovie};

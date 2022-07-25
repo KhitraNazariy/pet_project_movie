@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchTopRatedMovies} from "../../redux/movie/asyncActions";
-import {MovieCard, Sort} from "../../components";
+import {MovieCard, SortMovie} from "../../components";
 import scss from './TopRatedMoviePage.module.scss'
 import {clearGenres, clearSort} from "../../redux/filter/filterSlice";
 import {fetchFilteredMovie} from "../../redux/filter/asyncActions";
@@ -30,7 +30,7 @@ const TopRatedMoviePage = () => {
 
     return (
         <div className={scss.topRated}>
-            <Sort/>
+            <SortMovie/>
             <div className={scss.topRated__content}>
                 {responseTopRatedMovie && (
                     <>

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import scss from './NowPlayingMoviePage.module.scss';
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchNowPlayingMovies} from "../../redux/movie/asyncActions";
-import {MovieCard, Sort} from "../../components";
+import {MovieCard, SortMovie} from "../../components";
 import {fetchFilteredMovie} from "../../redux/filter/asyncActions";
 import {clearResponseNowPlaying} from "../../redux/movie/movieSlice";
 import {clearGenres, clearSort} from "../../redux/filter/filterSlice";
@@ -31,7 +31,7 @@ const NowPlayingMoviePage: FC = () => {
 
     return (
         <div className={scss.nowPlaying}>
-            <Sort/>
+            <SortMovie/>
             <div className={scss.nowPlaying__content}>
                 {responseNowPlayingMovie && (
                     <>

@@ -1,0 +1,19 @@
+.popularTv {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+
+  &__sort {
+    height: 500px;
+    min-width: 240px;
+    background-color: #32303a;
+  }
+
+  &__content {
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+}

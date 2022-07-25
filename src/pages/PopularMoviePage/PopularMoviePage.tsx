@@ -5,7 +5,7 @@ import scss from './PopularMoviePage.module.scss'
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchPopularMovies} from "../../redux/movie/asyncActions";
 import {MovieCard} from "../../components";
-import {Sort} from "../../components";
+import {SortMovie} from "../../components";
 import {fetchFilteredMovie} from "../../redux/filter/asyncActions";
 import {clearResponsePopularMovie} from "../../redux/movie/movieSlice";
 import {clearGenres, clearSort} from "../../redux/filter/filterSlice";
@@ -17,7 +17,9 @@ const PopularMoviePage: FC = () => {
     const {sort, withGenres, responseDiscoverMovie} = useSelector((state:RootState) => state.filterSlice);
 
     useEffect(() => {
-        dispatch(fetchPopularMovies())
+        if (responsePopularMovies) {
+            dispatch(fetchPopularMovies())
+        }
         return () => {
             dispatch(clearSort())
             dispatch(clearGenres())
@@ -29,10 +31,12 @@ const PopularMoviePage: FC = () => {
         dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: String('')}))
     },[sort, withGenres])
 
+    console.log(responsePopularMovies)
+
 
     return (
         <div className={scss.popularMovie}>
-            <Sort/>
+            <SortMovie/>
             <div className={scss.popularMovie__content}>
                 {responsePopularMovies && (
                     <>

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import scss from './UpcomingMoviePage.module.scss';
 import {RootState, useAppDispatch} from "../../redux/store";
 import {fetchUpcomingMovies} from "../../redux/movie/asyncActions";
-import {MovieCard, Sort} from "../../components";
+import {MovieCard, SortMovie} from "../../components";
 import {clearGenres, clearSort} from "../../redux/filter/filterSlice";
 import {fetchFilteredMovie} from "../../redux/filter/asyncActions";
 import {clearResponseUpcomingMovie} from "../../redux/movie/movieSlice";
@@ -30,7 +30,7 @@ const UpcomingMoviePage: FC = () => {
 
     return (
         <div className={scss.upcoming}>
-            <Sort/>
+            <SortMovie/>
             <div className={scss.upcoming__content}>
                 {responseUpcomingMovies && (
                     <>

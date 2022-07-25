@@ -27,10 +27,18 @@ const DropdownMenu: FC = () => {
                 <li>
                     Серіали
                     <ul>
-                        <li>Популярні</li>
-                        <li>Сьогодні в ефірі</li>
-                        <li>Зараз по телевізору</li>
-                        <li>Рейтингові</li>
+                        <NavLink to={'tv-popular'}>
+                            <li>Популярні</li>
+                        </NavLink>
+                        <NavLink to={'tv-airing-today'}>
+                            <li>Сьогодні в ефірі</li>
+                        </NavLink>
+                        <NavLink to={'tv-on-the-air'}>
+                            <li>Зараз по телевізору</li>
+                        </NavLink>
+                        <NavLink to={'tv-top-rated'}>
+                            <li>Рейтингові</li>
+                        </NavLink>
                     </ul>
                 </li>
                 <li>

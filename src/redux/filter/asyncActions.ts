@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
-import {movieService} from "../../services";
+import {movieService, tvService} from "../../services";
 import {DiscoverMovieParams, ResponseDiscoverMovie} from "./types/discoverMovie";
 
 export const fetchGenresMovie = createAsyncThunk(
@@ -13,6 +13,18 @@ export const fetchGenresMovie = createAsyncThunk(
         }
     }
 );
+
+
+export const fetchGenresTv = createAsyncThunk(
+    'filterSlice/fetchGenresTv',
+    async (_, {rejectWithValue}) => {
+        try {
+            return tvService.getGenres()
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
 
 
 export const fetchFilteredMovie = createAsyncThunk<ResponseDiscoverMovie, DiscoverMovieParams>(

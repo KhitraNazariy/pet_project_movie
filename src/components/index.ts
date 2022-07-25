@@ -2,12 +2,15 @@ export * from './DropdownMenu/DropdownMenu';
 export * from './Footer/Footer';
 export * from './GenreItem/GenreItem';
 export * from './Genres/Genres';
+export * from './GenresTv/GenresTv';
 export * from './Header/Header';
 export * from './MovieCard/MovieCard';
 export * from './PopularMovieSlider/PopularMovieSlider';
 export * from './PopularTvSlider/PopularTvSlider'
 export * from './Poster/Poster';
 export * from './Search/Search';
-export * from './Sort/Sort';
-export * from './Toggle/Toggle'
+export * from './SortMovie/SortMovie';
+export * from './SortTv/SortTv';
+export * from './Toggle/Toggle';
+export * from './TvCard/TvCard';
 export * from './UpcomingMovieSlider/UpcomingMovieSlider';

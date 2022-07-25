@@ -12,6 +12,10 @@ type Urls = {
     discoverMovie: string;
 
     popularTv: string;
+    airingTodayTv: string;
+    onTheAirTv: string;
+    genresTv: string;
+    topRatedTv: string;
 }
 
 export const urls: Urls = {
@@ -22,7 +26,11 @@ export const urls: Urls = {
     genreMovies: '/genre/movie/list',
     discoverMovie: '/discover/movie',
 
-    popularTv: '/tv/popular'
+    popularTv: '/tv/popular',
+    airingTodayTv: '/tv/airing_today',
+    onTheAirTv: '/tv/on_the_air',
+    topRatedTv: '/tv/top_rated',
+    genresTv: '/genre/tv/list'
 }
 
 export default baseURL
