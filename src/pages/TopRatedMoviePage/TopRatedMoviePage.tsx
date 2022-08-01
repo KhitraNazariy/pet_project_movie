@@ -25,7 +25,7 @@ const TopRatedMoviePage = () => {
 
     useEffect(() => {
         dispatch(clearResponseTopRated())
-        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: String('')}))
+        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: '', maximumDate: ''}))
     },[sort, withGenres])
 
     return (

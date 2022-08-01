@@ -6,6 +6,10 @@ import {fetchAiringTodayTv, fetchOnTheAirTv, fetchPopularTv, fetchTopRatedTv} fr
 import {ResponseAiringTodayTv} from "./types/airingToday";
 import {ResponseOnTheAirTv} from "./types/onTheAir";
 import {ResponseTopRatedTv} from "./types/topRated";
+import {ResponsePopularMovies} from "../movie/types/popularMovie";
+import {ResponseUpcomingMovies} from "../movie/types/upcomingMovies";
+import {ResponseNowPlayingMovie} from "../movie/types/nowPlayingMovie";
+import {ResponseTopRatedMovie} from "../movie/types/topRatedMovie";
 
 const initialState: TvSliceState = {
     responsePopularTv: {} as ResponsePopularTv,
@@ -25,7 +29,23 @@ const initialState: TvSliceState = {
 const tvSlice = createSlice({
     name: 'tvSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        clearResponsePopularTv(state) {
+            state.responsePopularTv = {} as ResponsePopularTv
+        },
+
+        clearResponseAiringTodayTv(state) {
+            state.responseAiringTodayTv = {} as ResponseAiringTodayTv
+        },
+
+        clearResponseOnTheAirTv(state) {
+            state.responseOnTheAirTv = {} as ResponseOnTheAirTv
+        },
+
+        clearResponseTopRatedTv(state) {
+            state.responseTopRatedTv = {} as ResponseTopRatedTv
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchPopularTv.pending, (state) => {
             state.popularTvStatus = 'loading'
@@ -89,3 +109,10 @@ const tvSlice = createSlice({
 });
 
 export default tvSlice.reducer
+
+export const {
+    clearResponsePopularTv,
+    clearResponseTopRatedTv,
+    clearResponseAiringTodayTv,
+    clearResponseOnTheAirTv
+} = tvSlice.actions;

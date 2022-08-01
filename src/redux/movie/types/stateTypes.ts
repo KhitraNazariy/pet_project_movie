@@ -16,7 +16,6 @@ export interface MovieSliceState {
     responseNowPlayingMovie: ResponseNowPlayingMovie;
     nowPlayingMoviesStatus: string;
     nowPlayingMoviesError: SerializedError;
-    minimumDate: string;
 
     responseTopRatedMovie: ResponseTopRatedMovie;
     topRatedMoviesStatus: string;

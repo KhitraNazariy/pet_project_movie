@@ -8,6 +8,7 @@ import {MovieCard, SortMovie} from "../../components";
 import {clearGenres, clearSort} from "../../redux/filter/filterSlice";
 import {fetchFilteredMovie} from "../../redux/filter/asyncActions";
 import {clearResponseUpcomingMovie} from "../../redux/movie/movieSlice";
+import {configurePresentDate} from "../../utils/Dates";
 
 const UpcomingMoviePage: FC = () => {
 
@@ -25,7 +26,7 @@ const UpcomingMoviePage: FC = () => {
 
     useEffect(() => {
         dispatch(clearResponseUpcomingMovie())
-        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: String('')}))
+        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: configurePresentDate(), maximumDate: ''}))
     }, [sort, withGenres])
 
     return (

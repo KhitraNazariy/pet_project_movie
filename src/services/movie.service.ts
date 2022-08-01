@@ -23,7 +23,7 @@ export const movieService = {
     getGenres: () => axiosService.get<ResponseGenresMovie>
     (`${urls.genreMovies}?api_key=${API_KEY}&language=uk`)
         .then(value => value.data),
-    getFiltered: (id: string, sortQuery: string, minimumDate: string) => axiosService.get<ResponseDiscoverMovie>
-    (`${urls.discoverMovie}?api_key=${API_KEY}&language=uk&release_date.gte=${minimumDate}&sort_by=${sortQuery}&with_genres=${id}`)
+    getFiltered: (id: string, sortQuery: string, minimumDate: string, maximumDate: string) => axiosService.get<ResponseDiscoverMovie>
+    (`${urls.discoverMovie}?api_key=${API_KEY}&language=uk&release_date.gte=${minimumDate}&release_date.lte=${maximumDate}&sort_by=${sortQuery}&with_genres=${id}`)
         .then(value => value.data)
 }

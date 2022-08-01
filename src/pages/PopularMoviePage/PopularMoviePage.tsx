@@ -28,11 +28,8 @@ const PopularMoviePage: FC = () => {
 
     useEffect(() => {
         dispatch(clearResponsePopularMovie())
-        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: String('')}))
+        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: '', maximumDate: ''}))
     },[sort, withGenres])
-
-    console.log(responsePopularMovies)
-
 
     return (
         <div className={scss.popularMovie}>

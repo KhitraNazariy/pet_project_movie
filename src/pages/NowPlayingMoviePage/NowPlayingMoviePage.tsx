@@ -8,12 +8,16 @@ import {MovieCard, SortMovie} from "../../components";
 import {fetchFilteredMovie} from "../../redux/filter/asyncActions";
 import {clearResponseNowPlaying} from "../../redux/movie/movieSlice";
 import {clearGenres, clearSort} from "../../redux/filter/filterSlice";
+import {configureDateLastMonth, configurePresentDate} from "../../utils/Dates";
 
 const NowPlayingMoviePage: FC = () => {
 
-    const {responseNowPlayingMovie, minimumDate} = useSelector((state: RootState) => state.movieSlice);
+    const {responseNowPlayingMovie} = useSelector((state: RootState) => state.movieSlice);
     const {withGenres, sort, responseDiscoverMovie} = useSelector((state: RootState) => state.filterSlice);
     const dispatch = useAppDispatch();
+
+    console.log(configureDateLastMonth())
+    console.log(configurePresentDate())
 
     useEffect(() => {
         dispatch(fetchNowPlayingMovies())
@@ -25,7 +29,12 @@ const NowPlayingMoviePage: FC = () => {
 
     useEffect(() => {
         dispatch(clearResponseNowPlaying())
-        dispatch(fetchFilteredMovie({id: String(withGenres.id), sortQuery: String(sort.sortQuery), minimumDate: String(minimumDate)}))
+        dispatch(fetchFilteredMovie({
+            id: String(withGenres.id),
+            sortQuery: String(sort.sortQuery),
+            minimumDate: configureDateLastMonth(),
+            maximumDate: configurePresentDate()
+        }))
     }, [withGenres, sort])
 
 

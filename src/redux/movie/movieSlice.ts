@@ -20,7 +20,6 @@ const initialState: MovieSliceState = {
     responseNowPlayingMovie: {} as ResponseNowPlayingMovie,
     nowPlayingMoviesStatus: '',
     nowPlayingMoviesError: '' as SerializedError,
-    minimumDate: '',
 
     responseTopRatedMovie: {} as ResponseTopRatedMovie,
     topRatedMoviesStatus: '',
@@ -85,7 +84,6 @@ const movieSlice = createSlice({
         builder.addCase(fetchNowPlayingMovies.fulfilled, (state, action: PayloadAction<ResponseNowPlayingMovie>) => {
             state.nowPlayingMoviesStatus = 'success'
             state.responseNowPlayingMovie = action.payload
-            state.minimumDate = action.payload.dates.minimum
         });
 
         builder.addCase(fetchNowPlayingMovies.rejected, (state, action) => {

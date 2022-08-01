@@ -1,30 +1,28 @@
-export type DiscoverMovieParams = {
+export type DiscoverTvParams = {
     id: string;
     sortQuery: string;
-    minimumDate: string;
-    maximumDate: string;
+
 };
 
-export type DiscoverMovie = {
-    adult: boolean;
+export type DiscoverTv = {
     backdrop_path: string;
+    first_air_date: string;
     genre_ids: number[];
     id: number;
+    name: string;
+    origin_country: string[];
     original_language: string;
-    original_title: string;
+    original_name: string;
     overview: string;
     popularity: number;
     poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
     vote_average: number;
     vote_count: number;
 }
 
-export type ResponseDiscoverMovie = {
+export type ResponseDiscoverTv = {
     page: number;
-    results: DiscoverMovie[];
+    results: DiscoverTv[],
     total_pages: number;
     total_results: number;
 }

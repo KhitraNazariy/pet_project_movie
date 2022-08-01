@@ -1,7 +1,8 @@
 import {createSlice, PayloadAction, SerializedError} from "@reduxjs/toolkit";
 
-import {fetchFilteredMovie, fetchGenresMovie, fetchGenresTv} from "./asyncActions";
+import {fetchFilteredMovie, fetchFilteredTv, fetchGenresMovie, fetchGenresTv} from "./asyncActions";
 import {ResponseDiscoverMovie} from "./types/discoverMovie";
+import {ResponseDiscoverTv} from "./types/discoverTv";
 
 export type SortObj = {
     name: string;
@@ -30,6 +31,9 @@ interface FilterSliceState {
     responseDiscoverMovie: ResponseDiscoverMovie;
     discoverMovieStatus: string;
     discoverMovieError: SerializedError;
+    responseDiscoverTv: ResponseDiscoverTv;
+    discoverTvStatus: string;
+    discoverTvError: SerializedError;
     genresTv: ResponseGenresTv;
     genresTvStatus: string;
     genresTvError: SerializedError,
@@ -44,6 +48,9 @@ const initialState: FilterSliceState = {
     responseDiscoverMovie: {} as ResponseDiscoverMovie,
     discoverMovieStatus: '',
     discoverMovieError: '' as SerializedError,
+    responseDiscoverTv: {} as ResponseDiscoverTv,
+    discoverTvStatus: '',
+    discoverTvError: '' as SerializedError,
     genresTv: {} as ResponseGenresTv,
     genresTvStatus: '',
     genresTvError: '' as SerializedError,
@@ -121,7 +128,22 @@ const filterSlice = createSlice({
         builder.addCase(fetchGenresTv.rejected, (state, action) => {
             state.genresTvStatus = 'error'
             state.error = action.error
-        })
+        });
+
+
+        builder.addCase(fetchFilteredTv.pending, (state) => {
+            state.discoverTvStatus = 'loading'
+        });
+
+        builder.addCase(fetchFilteredTv.fulfilled, (state, action: PayloadAction<ResponseDiscoverTv>) => {
+            state.discoverTvStatus = 'success'
+            state.responseDiscoverTv = action.payload
+        });
+
+        builder.addCase(fetchFilteredTv.rejected, (state, action) => {
+            state.discoverTvStatus = 'error'
+            state.discoverTvError = action.error
+        });
     }
 
 

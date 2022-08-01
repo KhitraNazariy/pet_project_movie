@@ -5,6 +5,7 @@ import {ResponseGenresTv} from "../redux/filter/filterSlice";
 import {ResponseAiringTodayTv} from "../redux/tv/types/airingToday";
 import {ResponseOnTheAirTv} from "../redux/tv/types/onTheAir";
 import {ResponseTopRatedTv} from "../redux/tv/types/topRated";
+import {ResponseDiscoverTv} from "../redux/filter/types/discoverTv";
 
 export const tvService = {
     getPopular: () => axiosService.get<ResponsePopularTv>
@@ -21,5 +22,8 @@ export const tvService = {
         .then(value => value.data),
     getTopRated: () => axiosService.get<ResponseTopRatedTv>
     (`${urls.topRatedTv}?api_key=${API_KEY}&language=uk`)
+        .then(value => value.data),
+    getFiltered: (id: string, sortQuery: string) => axiosService.get<ResponseDiscoverTv>
+    (`${urls.discoverTv}?api_key=${API_KEY}&language=uk&sort_by=${sortQuery}&with_genres=${id}`)
         .then(value => value.data)
 }
